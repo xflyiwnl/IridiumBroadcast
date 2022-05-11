@@ -11,11 +11,14 @@ public class Config {
     private static File settingsFile;
     private static YamlConfiguration settingsYaml;
 
-    private static File messagesFile;
-    private static YamlConfiguration messagesYaml;
+    private static File languageFile;
+    private static YamlConfiguration languageYaml;
 
     private static File databaseFile;
     private static YamlConfiguration databaseYaml;
+
+    private static File guiFile;
+    private static YamlConfiguration guiYaml;
 
     public Config() {
 
@@ -26,12 +29,12 @@ public class Config {
         }
         settingsYaml = YamlConfiguration.loadConfiguration(settingsFile);
 
-        messagesFile = new File(Main.getMain().getDataFolder(), "messages.yml");
-        if (!messagesFile.exists()) {
-            Main.getMain().saveResource("messages.yml", true);
-            Bukkit.getConsoleSender().sendMessage("messages.yml не найден, создаём новый конфиг...");
+        languageFile = new File(Main.getMain().getDataFolder(), "language.yml");
+        if (!languageFile.exists()) {
+            Main.getMain().saveResource("language.yml", true);
+            Bukkit.getConsoleSender().sendMessage("language.yml не найден, создаём новый конфиг...");
         }
-        messagesYaml = YamlConfiguration.loadConfiguration(messagesFile);
+        languageYaml = YamlConfiguration.loadConfiguration(languageFile);
 
         databaseFile = new File(Main.getMain().getDataFolder(), "database.yml");
         if (!databaseFile.exists()) {
@@ -39,6 +42,13 @@ public class Config {
             Bukkit.getConsoleSender().sendMessage("database.yml не найден, создаём новый конфиг...");
         }
         databaseYaml = YamlConfiguration.loadConfiguration(databaseFile);
+
+        guiFile = new File(Main.getMain().getDataFolder(), "gui.yml");
+        if (!guiFile.exists()) {
+            Main.getMain().saveResource("gui.yml", true);
+            Bukkit.getConsoleSender().sendMessage("gui.yml не найден, создаём новый конфиг...");
+        }
+        guiYaml = YamlConfiguration.loadConfiguration(guiFile);
 
     }
 
@@ -50,12 +60,12 @@ public class Config {
         return settingsYaml;
     }
 
-    public static File getMessagesFile() {
-        return messagesFile;
+    public static File getLanguageFile() {
+        return languageFile;
     }
 
-    public static YamlConfiguration getMessagesYaml() {
-        return messagesYaml;
+    public static YamlConfiguration getLanguageYaml() {
+        return languageYaml;
     }
 
     public static File getDatabaseFile() {
@@ -64,5 +74,13 @@ public class Config {
 
     public static YamlConfiguration getDatabaseYaml() {
         return databaseYaml;
+    }
+
+    public static File getGuiFile() {
+        return guiFile;
+    }
+
+    public static YamlConfiguration getGuiYaml() {
+        return guiYaml;
     }
 }

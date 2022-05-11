@@ -1,0 +1,17 @@
+language:
+
+  chat-prefix: "Hello"
+
+  args:
+    - ""
+    - ""
+    - ""
+    - ""
+
+  errors:
+
+    is-not-player:
+      - "{prefix} &fКоманда только для живых игроков."
+
+    already-sent:
+      - "{prefix} &fВаше объявление уже отправлено, ожидайте модерацию."

@@ -1,5 +1,6 @@
 package me.xflyiwnl.iridiumbroadcast.broadcast;
 
+import me.xflyiwnl.iridiumbroadcast.chat.ChatMessages;
 import me.xflyiwnl.iridiumbroadcast.config.Config;
 import me.xflyiwnl.iridiumbroadcast.gui.BroadcastGUI;
 import me.xflyiwnl.iridiumbroadcast.utils.BroadcastUtil;
@@ -53,10 +54,7 @@ public class Broadcast {
                 break;
             }
 
-            for (String msg : Config.getLanguageYaml().getStringList("language.admin.notification")) {
-                admin.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        msg.replace("{prefix}", Config.getLanguageYaml().getString("language.chat-prefix"))));
-            }
+            ChatMessages.notification(admin);
 
         }
 

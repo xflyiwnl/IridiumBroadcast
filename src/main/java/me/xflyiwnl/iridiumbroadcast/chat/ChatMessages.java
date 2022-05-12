@@ -1,6 +1,8 @@
 package me.xflyiwnl.iridiumbroadcast.chat;
 
+import me.xflyiwnl.iridiumbroadcast.Main;
 import me.xflyiwnl.iridiumbroadcast.config.Config;
+import me.xflyiwnl.iridiumbroadcast.manager.CooldownManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -123,6 +125,80 @@ public class ChatMessages {
 
             p.sendMessage(ChatColor.translateAlternateColorCodes('&',
                     msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
+    public static void refused(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.admin.refused")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
+    public static void broadcastRefused(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.other.broadcast-refused")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
+    public static void broadcastAccepted(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.other.broadcast-accepted")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
+    public static void broadcastCooldown(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.other.broadcast-cooldown")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX).
+                            replace("{cooldown}", CooldownManager.getCooldownTimer().get(p.getUniqueId()).toString())));
+
+        }
+
+    }
+
+    public static void noMoney(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.other.not-enough-money")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX).replace("{money}", String.valueOf(Config.getSettingsYaml().getInt("settings.broadcast-cost") - Main.getEconomy().getBalance(p)))));
+
+        }
+
+    }
+
+    public static void withdrawMoney(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.other.enough-money")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX).
+                            replace("{money}", String.valueOf(Config.getSettingsYaml().getInt("settings.broadcast-cost")))));
 
         }
 

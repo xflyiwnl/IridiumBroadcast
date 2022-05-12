@@ -12,7 +12,7 @@ public class BroadcastUtil {
 
     public static void saveBroadcasts(Player player, String broadcast) throws IOException {
 
-        if (Config.getDatabaseYaml().getString("database." + player.getName()) != null) {
+        if (player == null) {
             return;
         }
 

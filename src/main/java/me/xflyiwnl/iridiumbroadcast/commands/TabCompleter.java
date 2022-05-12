@@ -26,9 +26,13 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
                 argument.add("clear");
             }
 
+            if (sender.hasPermission("iridiumbroadcast.admin.reload")) {
+                argument.add("reload");
+            }
+
         }
 
-        if (args.length == 1) {
+        if (args.length <= 1) {
             return argument;
         }
 

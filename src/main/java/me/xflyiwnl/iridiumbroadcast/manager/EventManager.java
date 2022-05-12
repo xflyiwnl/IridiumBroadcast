@@ -35,17 +35,45 @@ public class EventManager implements Listener {
                 return;
             }
 
-            Broadcast.broadcast(BroadcastGUI.getSlot().get(slot), player,
-                    Main.broadcasts.get(BroadcastGUI.getSlot().get(slot)).getBroadcast());
+            if (event.getClick().isLeftClick()) {
 
-            Main.broadcasts.clear();
+                Broadcast.broadcast(BroadcastGUI.getSlot().get(slot), player,
+                        Main.broadcasts.get(BroadcastGUI.getSlot().get(slot)).getBroadcast());
 
-            Config.getDatabaseYaml().set("database." + BroadcastGUI.getSlot().get(slot).getName(), null);
-            Config.getDatabaseYaml().save(Config.getDatabaseFile());
+                Main.broadcasts.remove(BroadcastGUI.getSlot().get(slot));
 
-            player.closeInventory();
+                Config.getDatabaseYaml().set("database." + BroadcastGUI.getSlot().get(slot).getName(), null);
+                Config.getDatabaseYaml().save(Config.getDatabaseFile());
 
-            ChatMessages.accepted(player);
+                player.closeInventory();
+
+                ChatMessages.accepted(player);
+
+                if (BroadcastGUI.getSlot().get(slot).isOnline()) {
+                    ChatMessages.broadcastAccepted(BroadcastGUI.getSlot().get(slot));
+
+                    return;
+                }
+
+                return;
+            }
+            if (event.getClick().isRightClick()) {
+
+                Main.broadcasts.remove(BroadcastGUI.getSlot().get(slot));
+
+                Config.getDatabaseYaml().set("database." + BroadcastGUI.getSlot().get(slot).getName(), null);
+                Config.getDatabaseYaml().save(Config.getDatabaseFile());
+
+                player.closeInventory();
+
+                ChatMessages.refused(player);
+
+                if (BroadcastGUI.getSlot().get(slot).isOnline()) {
+                    ChatMessages.broadcastRefused(BroadcastGUI.getSlot().get(slot));
+
+                    return;
+                }
+            }
 
         }
 

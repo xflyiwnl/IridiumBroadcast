@@ -5,6 +5,9 @@ import me.xflyiwnl.iridiumbroadcast.broadcast.Broadcast;
 import me.xflyiwnl.iridiumbroadcast.chat.ChatMessages;
 import me.xflyiwnl.iridiumbroadcast.config.Config;
 import me.xflyiwnl.iridiumbroadcast.gui.BroadcastGUI;
+import me.xflyiwnl.iridiumbroadcast.manager.CooldownManager;
+import net.milkbowl.vault.economy.Economy;
+import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -45,6 +48,16 @@ public class BroadcastCommand implements CommandExecutor {
                 return true;
             }
 
+            if (CooldownManager.getCooldownTimer().containsKey(player.getUniqueId())) {
+                ChatMessages.broadcastCooldown(player);
+                return true;
+            }
+
+            if (Main.getEconomy().getBalance(player) < Config.getSettingsYaml().getInt("settings.broadcast-cost")) {
+                ChatMessages.noMoney(player);
+                return true;
+            }
+
             StringBuilder sb = new StringBuilder();
             sb.append(args[1]);
             for (int i = 2; i < args.length; i++) {
@@ -59,6 +72,9 @@ public class BroadcastCommand implements CommandExecutor {
 
             ChatMessages.broadcastSent(player);
             Broadcast.notification();
+
+            CooldownManager.getCooldownTimer().put(player.getUniqueId(), Config.getSettingsYaml().getInt("settings.broadcast-cooldown"));
+            Main.getEconomy().withdrawPlayer(player, Config.getSettingsYaml().getInt("settings.broadcast-cost"));
 
         }
 
@@ -80,6 +96,8 @@ public class BroadcastCommand implements CommandExecutor {
                 return true;
             }
 
+            ChatMessages.cleared(player);
+
             Main.broadcasts.clear();
 
             if (Config.getDatabaseYaml().getConfigurationSection("database") == null) {
@@ -95,8 +113,6 @@ public class BroadcastCommand implements CommandExecutor {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            ChatMessages.cleared(player);
 
         }
 

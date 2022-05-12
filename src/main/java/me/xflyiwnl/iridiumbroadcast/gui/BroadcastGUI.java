@@ -20,7 +20,8 @@ public class BroadcastGUI {
     public static HashMap<Integer, Player> slot = new HashMap<Integer, Player>();
 
     public static void createInventory(Player player) {
-        broadcastGUI = Bukkit.createInventory(null, 54, "Список объявлений:");
+        broadcastGUI = Bukkit.createInventory(null, 54, Config.getGuiYaml().getString(ChatColor.translateAlternateColorCodes('&',
+                "gui.broadcast.gui-title")));
         player.openInventory(broadcastGUI);
         setSlot();
     }

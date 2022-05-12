@@ -1,0 +1,5 @@
+settings:
+
+  broadcast-format:
+    - "{prefix} &f{broadcast} &6({player})"
+    - "&fПроверил администратор - &6{admin}"

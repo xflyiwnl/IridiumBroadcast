@@ -2,7 +2,9 @@ package me.xflyiwnl.iridiumbroadcast;
 
 import me.xflyiwnl.iridiumbroadcast.broadcast.Broadcast;
 import me.xflyiwnl.iridiumbroadcast.commands.BroadcastCommand;
+import me.xflyiwnl.iridiumbroadcast.commands.TabCompleter;
 import me.xflyiwnl.iridiumbroadcast.config.Config;
+import me.xflyiwnl.iridiumbroadcast.manager.EventManager;
 import me.xflyiwnl.iridiumbroadcast.utils.BroadcastUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -24,6 +26,8 @@ public final class Main extends JavaPlugin {
 
         new Config();
         Bukkit.getPluginCommand("iridiumbroadcast").setExecutor(new BroadcastCommand());
+        Bukkit.getPluginCommand("iridiumbroadcast").setTabCompleter(new TabCompleter());
+        Bukkit.getPluginManager().registerEvents(new EventManager(), this);
 
         try {
             BroadcastUtil.loadBroadcasts();

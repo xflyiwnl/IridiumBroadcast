@@ -1,11 +1,12 @@
 language:
 
-  chat-prefix: "Hello"
+  chat-prefix: "&6Iridium Broadcast &7>"
 
   args:
     - ""
-    - ""
-    - ""
+    - "{prefix} &fКоманды:"
+    - " &6* /ibc broadcast &f- сделать объявление"
+    - " &6* /ibc admin &f- модерация"
     - ""
 
   errors:
@@ -15,3 +16,28 @@ language:
 
     already-sent:
       - "{prefix} &fВаше объявление уже отправлено, ожидайте модерацию."
+
+    not-have-permission:
+      - "{prefix} &fУ вас недостаточно прав."
+
+    use:
+      - "{prefix} &fИспользование: &6/ibc broadcast {объявление}."
+
+  admin:
+
+    notification:
+      - "{prefix} &fПоступило новое объявление, проверьте его."
+
+    accepted:
+      - "{prefix} &fВы успешно одобрили данное объявление."
+
+    cleared:
+      - "{prefix} &fВы успешно очистили базу данных."
+
+    reloaded:
+      - "{prefix} &fПлагин перезагружен."
+
+  other:
+
+    broadcast-sent:
+      - "{prefix} &fВы успешно отправили своё объявление на модерацию."

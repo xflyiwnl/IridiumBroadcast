@@ -4,4 +4,11 @@ gui:
 
     item-format:
 
-      display-item: ""
+      display-item: BOOK
+      display-name: "&6{player}"
+      lore:
+        - ""
+        - " &fИгрок: &6{player}"
+        - " &fОбъявление:"
+        - " &6{broadcast}"
+        - ""

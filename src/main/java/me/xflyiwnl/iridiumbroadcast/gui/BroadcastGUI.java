@@ -1,37 +1,60 @@
 package me.xflyiwnl.iridiumbroadcast.gui;
 
 import me.xflyiwnl.iridiumbroadcast.Main;
-import me.xflyiwnl.iridiumbroadcast.broadcast.Broadcast;
+import me.xflyiwnl.iridiumbroadcast.config.Config;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class BroadcastGUI {
 
     private static Inventory broadcastGUI;
     public static HashMap<Integer, Player> slot = new HashMap<Integer, Player>();
 
-    public BroadcastGUI(Player player) {
+    public static void createInventory(Player player) {
         broadcastGUI = Bukkit.createInventory(null, 54, "Список объявлений:");
+        player.openInventory(broadcastGUI);
         setSlot();
     }
 
-    public void setSlot() {
+    private static void setSlot() {
 
         slot.clear();
         for (Player p : Main.broadcasts.keySet()) {
-            for (int i = 0; i == Main.broadcasts.size(); i++) {
+            for (int i = 0; i < Main.broadcasts.size(); i++) {
 
-                ItemStack broadcastItem = new ItemStack(Material.BOOK, 1);
+                if (p == null) {
+                    break;
+                }
+
+                if (i == 55) {
+                    break;
+                }
+
+                ItemStack broadcastItem = new ItemStack(Material.valueOf(Config.getGuiYaml().getString("gui.broadcast.item-format.display-item")), 1);
                 ItemMeta broadcastMeta = broadcastItem.getItemMeta();
+                broadcastMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&',
+                        Config.getGuiYaml().getString("gui.broadcast.item-format.display-name").replace("{player}", p.getName())));
+                List<String> broadcastLore = new ArrayList<>();
 
+                for (String s : Config.getGuiYaml().getStringList("gui.broadcast.item-format.lore")) {
+                    broadcastLore.add(ChatColor.translateAlternateColorCodes('&', s.
+                            replace("{player}", p.getPlayer().getName()).
+                            replace("{broadcast}", Main.broadcasts.get(p).getBroadcast())));
+                }
 
+                broadcastMeta.setLore(broadcastLore);
+                broadcastItem.setItemMeta(broadcastMeta);
                 broadcastGUI.setItem(i, broadcastItem);
+                slot.put(i, p);
             }
         }
     }
@@ -40,4 +63,7 @@ public class BroadcastGUI {
         return broadcastGUI;
     }
 
+    public static HashMap<Integer, Player> getSlot() {
+        return slot;
+    }
 }

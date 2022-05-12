@@ -52,6 +52,12 @@ public class Config {
 
     }
 
+    public static void reloadConfigurations() {
+        settingsYaml = YamlConfiguration.loadConfiguration(settingsFile);
+        languageYaml = YamlConfiguration.loadConfiguration(languageFile);
+        guiYaml = YamlConfiguration.loadConfiguration(guiFile);
+    }
+
     public static File getSettingsFile() {
         return settingsFile;
     }

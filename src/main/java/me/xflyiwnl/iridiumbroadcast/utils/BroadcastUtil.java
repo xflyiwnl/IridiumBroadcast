@@ -11,13 +11,24 @@ import java.io.IOException;
 public class BroadcastUtil {
 
     public static void saveBroadcasts(Player player, String broadcast) throws IOException {
+
+        if (Config.getDatabaseYaml().getString("database." + player.getName()) != null) {
+            return;
+        }
+
         Config.getDatabaseYaml().set("database." + player.getName(), broadcast);
         Config.getDatabaseYaml().save(Config.getDatabaseFile());
+
     }
 
     public static void loadBroadcasts() throws IOException {
 
-        for (String key : Config.getDatabaseYaml().getKeys(false)) {
+        if (Config.getDatabaseYaml().getConfigurationSection("database") == null) {
+            return;
+        }
+
+        for (String key : Config.getDatabaseYaml().getConfigurationSection("database").getKeys(false)) {
+
             Player player = Bukkit.getPlayer(key);
             String broadcast = Config.getDatabaseYaml().getString("database." + key);
 

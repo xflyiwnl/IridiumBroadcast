@@ -44,4 +44,88 @@ public class ChatMessages {
 
     }
 
+    public static void noPermission(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.errors.not-have-permission")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
+    public static void use(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.errors.use")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
+    public static void notification(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.admin.notification")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
+    public static void accepted(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.admin.accepted")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
+    public static void cleared(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.admin.cleared")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
+    public static void reloaded(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.admin.reloaded")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
+    public static void broadcastSent(Player p) {
+
+        for (String msg : Config.getLanguageYaml().
+                getStringList("language.other.broadcast-sent")) {
+
+            p.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    msg.replace("{prefix}", PREFIX)));
+
+        }
+
+    }
+
 }

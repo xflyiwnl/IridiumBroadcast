@@ -118,7 +118,7 @@ public class BroadcastCommand implements CommandExecutor {
 
         if (args[0].equalsIgnoreCase("reload")) {
 
-            if (!player.hasPermission("iridiumbroadcast.admin.clear")) {
+            if (!player.hasPermission("iridiumbroadcast.admin.reload")) {
                 ChatMessages.noPermission(player);
                 return true;
             }

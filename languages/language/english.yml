@@ -11,7 +11,7 @@ language:
   # plugin prefix, will work through the placeholder
   # placeholder: {prefix}
 
-  chat-prefix: "&2Iridium Broadcast &7'"
+  chat-prefix: "&2Iridium Broadcast &7›"
 
   # this message will be sent to the player if
   # player has not entered the command completely (not enough arguments)
@@ -69,7 +69,7 @@ language:
 
     #When the administrator rejected the ad
 
-    rejected:
+    refused:
       - "{prefix} &fYou have successfully rejected this ad."
 
     #when the administrator cleared the database

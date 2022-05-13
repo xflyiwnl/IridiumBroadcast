@@ -1,0 +1,42 @@
+
+#    ██████╗░██████╗░░█████╗░░█████╗░██████╗░░█████╗░░█████╗░░██████╗████████╗
+#    ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝╚══██╔══╝
+#    ██████╦╝██████╔╝██║░░██║███████║██║░░██║██║░░╚═╝███████║╚█████╗░░░░██║░░░
+#    ██╔══██╗██╔══██╗██║░░██║██╔══██║██║░░██║██║░░██╗██╔══██║░╚═══██╗░░░██║░░░
+#    ██████╦╝██║░░██║╚█████╔╝██║░░██║██████╔╝╚█████╔╝██║░░██║██████╔╝░░░██║░░░
+#    ╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░
+
+gui:
+
+  # Menu (do not change)
+
+  broadcast:
+
+    # Menu title
+
+    gui-title: "List of ads: "
+
+    # item-format
+
+    item-format:
+
+      # Item-format: # Display-item
+
+      display-item: BOOK
+
+      # Item name
+
+      display-name: " &2' &fPlayer's name: &2{player}"
+
+      # Item description
+      # {player} = author
+      # {broadcast} = announcement
+
+      lore:
+        - ""
+        - " &2' &fAuthor: &2{player}"
+        - " &2' &f Announcement: &2{broadcast}"
+        - ""
+        - " &a+ Click on the LCM to approve."
+        - " &c- Click on the LKM to reject."
+        

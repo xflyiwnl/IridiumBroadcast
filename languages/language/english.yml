@@ -1,0 +1,117 @@
+
+#    ██████╗░██████╗░░█████╗░░█████╗░██████╗░░█████╗░░█████╗░░██████╗████████╗
+#    ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝╚══██╔══╝
+#    ██████╦╝██████╔╝██║░░██║███████║██║░░██║██║░░╚═╝███████║╚█████╗░░░░██║░░░
+#    ██╔══██╗██╔══██╗██║░░██║██╔══██║██║░░██║██║░░██╗██╔══██║░╚═══██╗░░░██║░░░
+#    ██████╦╝██║░░██║╚█████╔╝██║░░██║██████╔╝╚█████╔╝██║░░██║██████╔╝░░░██║░░░
+#    ╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░
+
+language:
+
+  # plugin prefix, will work through the placeholder
+  # placeholder: {prefix}
+
+  chat-prefix: "&2Iridium Broadcast &7'"
+
+  # this message will be sent to the player if
+  # player has not entered the command completely (not enough arguments)
+
+  args:
+    - ""
+    - "{prefix} &fCommands:"
+    - ""
+    - " &2* /ibc broadcast &7- &f make announcement."
+    - " &2* /ibc admin &7- &f moderation menu."
+    - " &2* /ibc clear &7- &f clean database."
+    - " &2* /ibc reload &7- &f reload plugin."
+    - ""
+    - "&8@ Iridium Studio"
+
+  # Errors are sent if the player has no
+  # rights, if he console, not enough arguments for the command, etc.
+
+  errors:
+
+    # if the message is sent on behalf of the console
+
+    is-not-player:
+      - "{prefix} &fCommand is for live players only."
+
+    # if the announcement has already been sent
+
+    already-sent:
+      - "{prefix} &fYour ad has already been sent, awaiting moderation."
+
+    # If the player has no rights
+
+    not-have-permission:
+      - "{prefix} &fYou don't have enough permissions."
+
+    # If there are not enough arguments for the
+
+    use:
+      - "{prefix} &fUse: &2/ibc broadcast {declaration}."
+
+  # All messages that are sent
+  # to administrators who have rights
+
+  admin:
+
+    # notification to administrators
+
+    notification:
+      - "{prefix} &fThere is a new announcement, check it."
+
+    # When the administrator has approved the announcement
+
+    accepted:
+      - "{prefix} &fYou have successfully approved this ad."
+
+    #When the administrator rejected the ad
+
+    rejected:
+      - "{prefix} &fYou have successfully rejected this ad."
+
+    #when the administrator cleared the database
+
+    cleared:
+      - "{prefix} &fYou have successfully cleared the database."
+
+    # When the administrator reloaded the plugin
+
+    reloaded:
+      - "{prefix} &fPlugin reloaded."
+
+  # Other messages
+
+  other:
+
+    # When a player has sent an announcement for moderation
+
+    broadcast-sent:
+      - "{prefix} &fYou have successfully sent your ad for moderation."
+
+    # When a player's ad has been rejected
+
+    broadcast-refused:
+      - "{prefix} &fYour ad has been rejected."
+
+    # When a player's ad has been approved
+
+    broadcast-accepted:
+      - "{prefix} &fYour ad has been approved."
+
+    #coldown
+
+    broadcast-cooldown:
+      - "{prefix} &fWait another &2{cooldown} seconds&f to send your ad."
+
+    # {money} = amount of money needed
+
+    not-enough-money:
+      - "{prefix} &fYou don't have enough &2{money} coins&f to make the ad."
+
+    # {money} = ad price
+
+    enough-money:
+      - "{prefix} &fYou paid &2{money}."

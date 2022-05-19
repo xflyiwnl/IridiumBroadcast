@@ -4,13 +4,14 @@ import me.xflyiwnl.iridiumbroadcast.Main;
 import me.xflyiwnl.iridiumbroadcast.config.Config;
 import me.xflyiwnl.iridiumbroadcast.manager.CooldownManager;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class ChatMessages {
 
     private static String PREFIX = Config.getLanguageYaml().getString("language.chat-prefix");
 
-    public static void isNotPlayer(Player p) {
+    public static void isNotPlayer(CommandSender p) {
 
         for (String msg : Config.getLanguageYaml().
                 getStringList("language.errors.is-not.player")) {

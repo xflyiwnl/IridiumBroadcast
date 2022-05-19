@@ -8,34 +8,34 @@
 
 gui:
 
-  #   Меню (не менять)
+  # Menu (do not change)
 
   broadcast:
 
-    #   Название меню
+    # Menu title
 
-    gui-title: "Список объявлений: "
+    gui-title: "List of ads: "
 
-    #   Настройка предмета
+    # item-format
 
     item-format:
 
-      #   Отображаемый предмет
+      # Item-format: # Display-item
 
       display-item: BOOK
 
-      #   Название предмета
+      # Item name
 
-      display-name: " &2› &fОбъявление игрока: &2{player}"
+      display-name: " &2› &fPlayer's name: &2{player}"
 
-      #   Описание предмета
-      #   {player} = автор
-      #   {broadcast} = объявление
+      # Item description
+      # {player} = author
+      # {broadcast} = announcement
 
       lore:
         - ""
-        - " &2› &fАвтор: &2{player}"
-        - " &2› &fОбъявление: &2{broadcast}"
+        - " &2› &fAuthor: &2{player}"
+        - " &2› &fAnnouncement: &2{broadcast}"
         - ""
-        - " &a+ Нажмите на ЛКМ, чтобы одобрить."
-        - " &c- Нажмите на ПКМ, чтобы отклонить."
+        - " &a+ Click on the LCM to approve."
+        - " &c- Click on the LKM to reject."

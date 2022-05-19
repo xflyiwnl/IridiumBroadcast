@@ -20,7 +20,7 @@ public class BroadcastCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if (!(sender instanceof Player)) {
-            ChatMessages.isNotPlayer((Player) sender);
+            ChatMessages.isNotPlayer(sender);
             return true;
         }
 
@@ -72,6 +72,7 @@ public class BroadcastCommand implements CommandExecutor {
 
             ChatMessages.broadcastSent(player);
             Broadcast.notification();
+            ChatMessages.withdrawMoney(player);
 
             CooldownManager.getCooldownTimer().put(player.getUniqueId(), Config.getSettingsYaml().getInt("settings.broadcast-cooldown"));
             Main.getEconomy().withdrawPlayer(player, Config.getSettingsYaml().getInt("settings.broadcast-cost"));

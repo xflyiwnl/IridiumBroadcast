@@ -9,6 +9,7 @@ import me.xflyiwnl.iridiumbroadcast.manager.EventManager;
 import me.xflyiwnl.iridiumbroadcast.utils.BroadcastUtil;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -24,16 +25,14 @@ public final class Main extends JavaPlugin {
 
     public static HashMap<Player, Broadcast> broadcasts = new HashMap<Player, Broadcast>();
 
+    private static Logger logger = Bukkit.getLogger();
+
     private static Main main;
 
     @Override
     public void onEnable() {
 
-        if (!setupEconomy() ) {
-            log.severe(String.format("[%s] - Vault не найден, плагин был выключен!", getDescription().getName()));
-            getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
+        setupEconomy();
 
         main = this;
 
@@ -50,12 +49,26 @@ public final class Main extends JavaPlugin {
             e.printStackTrace();
         }
 
+        logo();
+
+    }
+
+    public void logo() {
+
+        logger.info(" ");
+        logger.info(this.getName() + ChatColor.DARK_GREEN + "   |    ██╗██████╗░██╗██████╗░██╗██╗░░░██╗███╗░░░███╗");
+        logger.info(this.getName() + ChatColor.DARK_GREEN + "   |    ██║██╔══██╗██║██╔══██╗██║██║░░░██║████╗░████║");
+        logger.info(this.getName() + ChatColor.DARK_GREEN + "   |    ██║██████╔╝██║██║░░██║██║██║░░░██║██╔████╔██║");
+        logger.info(this.getName() + ChatColor.DARK_GREEN + "   |    ██║██╔══██╗██║██║░░██║██║██║░░░██║██║╚██╔╝██║");
+        logger.info(this.getName() + ChatColor.DARK_GREEN + "   |    ██║██║░░██║██║██████╔╝██║╚██████╔╝██║░╚═╝░██║");
+        logger.info(this.getName() + ChatColor.DARK_GREEN + "   |    ╚═╝╚═╝░░╚═╝╚═╝╚═════╝░╚═╝░╚═════╝░╚═╝░░░░░╚═╝");
+        logger.info(" ");
+        logger.info(this.getName() + ChatColor.DARK_GREEN + "   |    Plugin is enabled!");
+        logger.info(this.getName() + ChatColor.DARK_GREEN + "   |    Author: Iridium Studio");
+        logger.info(" ");
     }
 
     private boolean setupEconomy() {
-        if (getServer().getPluginManager().getPlugin("Vault") == null) {
-            return false;
-        }
         RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
         if (rsp == null) {
             return false;

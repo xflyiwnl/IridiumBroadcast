@@ -8,110 +8,110 @@
 
 language:
 
-  #   Префикс плагина, будет работать через плейсхолдер
-  #   плейсхолдер:  {prefix}
+  # plugin prefix, will work through the placeholder
+  # placeholder: {prefix}
 
   chat-prefix: "&2Iridium Broadcast &7›"
 
-  #   Это сообщение отправляться игроку, если
-  #   игрок ввёл команду не полностью (недостаточно аргументов)
+  # this message will be sent to the player if
+  # player has not entered the command completely (not enough arguments)
 
   args:
     - ""
-    - "{prefix} &fКоманды:"
+    - "{prefix} &fCommands:"
     - ""
-    - " &2* /ibc broadcast &7- &fсделать объявление."
-    - " &2* /ibc admin &7- &fменю модерации."
-    - " &2* /ibc clear &7- &fочистить базу данных."
-    - " &2* /ibc reload &7- &fперезагрузить плагин."
+    - " &2* /ibc broadcast &7- &f make announcement."
+    - " &2* /ibc admin &7- &f moderation menu."
+    - " &2* /ibc clear &7- &f clean database."
+    - " &2* /ibc reload &7- &f reload plugin."
     - ""
     - "&8@ Iridium Studio"
 
-  #   Ошибки отправляются, если у игрока не будет
-  #   прав, если он консоль, недостаточно аргументов для команды и т.д
+  # Errors are sent if the player has no
+  # rights, if he console, not enough arguments for the command, etc.
 
   errors:
 
-    #   Если сообщение отправлено от имени консоли
+    # if the message is sent on behalf of the console
 
     is-not-player:
-      - "{prefix} &fКоманда только для живых игроков."
+      - "{prefix} &fCommand is for live players only."
 
-    #   Если объявление уже отправлено
+    # if the announcement has already been sent
 
     already-sent:
-      - "{prefix} &fВаше объявление уже отправлено, ожидайте модерацию."
+      - "{prefix} &fYour ad has already been sent, awaiting moderation."
 
-    #   Если у игрока нет прав
+    # If the player has no rights
 
     not-have-permission:
-      - "{prefix} &fУ вас недостаточно прав."
+      - "{prefix} &fYou don't have enough permissions."
 
-    #   Если недостаточно аргументов для команды
+    # If there are not enough arguments for the
 
     use:
-      - "{prefix} &fИспользование: &2/ibc broadcast {объявление}."
+      - "{prefix} &fUse: &2/ibc broadcast {declaration}."
 
-  #   Все сообщения, которые отправляются
-  #   администраторам, у которых есть права
+  # All messages that are sent
+  # to administrators who have rights
 
   admin:
 
-    #   Уведомление для администраторов
+    # notification to administrators
 
     notification:
-      - "{prefix} &fПоступило новое объявление, проверьте его."
+      - "{prefix} &fThere is a new announcement, check it."
 
-    #   Когда администратор одобрил объявление
+    # When the administrator has approved the announcement
 
     accepted:
-      - "{prefix} &fВы успешно одобрили данное объявление."
+      - "{prefix} &fYou have successfully approved this ad."
 
-    #   Когда администратор отклонил объявление
+    #When the administrator rejected the ad
 
     refused:
-      - "{prefix} &fВы успешно отклонили данное объявление."
+      - "{prefix} &fYou have successfully rejected this ad."
 
-    #   Когда администратор очистил базу данных
+    #when the administrator cleared the database
 
     cleared:
-      - "{prefix} &fВы успешно очистили базу данных."
+      - "{prefix} &fYou have successfully cleared the database."
 
-    #   Когда администратор перезагрузил плагин
+    # When the administrator reloaded the plugin
 
     reloaded:
-      - "{prefix} &fПлагин перезагружен."
+      - "{prefix} &fPlugin reloaded."
 
-  #   Другие сообщения
+  # Other messages
 
   other:
 
-    #   Когда игрок отправил объявление на модерацию
+    # When a player has sent an announcement for moderation
 
     broadcast-sent:
-      - "{prefix} &fВы успешно отправили своё объявление на модерацию."
+      - "{prefix} &fYou have successfully sent your ad for moderation."
 
-    #   Когда объявление игрока отклонили
+    # When a player's ad has been rejected
 
     broadcast-refused:
-      - "{prefix} &fВаше объявление отклонили."
+      - "{prefix} &fYour ad has been rejected."
 
-    #   Когда объявление игрока одобрили
+    # When a player's ad has been approved
 
     broadcast-accepted:
-      - "{prefix} &fВаше объявление одобрили."
+      - "{prefix} &fYour ad has been approved."
 
-    #   Кулдаун
+    #coldown
 
     broadcast-cooldown:
-      - "{prefix} &fПодождите еще &2{cooldown} секунд&f, чтобы отправить объявление."
+      - "{prefix} &fWait another &2{cooldown} seconds&f to send your ad."
 
-    #   {money} = необходимое количество денег
+    # {money} = amount of money needed
 
     not-enough-money:
-      - "{prefix} &fВам не хватает &2{money} монет&f, чтобы сделать объявление."
+      - "{prefix} &fYou don't have enough &2{money} coins&f to make the ad."
 
-    #   {money} = цена объявления
+    # {money} = ad price
 
     enough-money:
-      - "{prefix} &fВы заплатили &2{money} монет&f за объявление."
+      - "{prefix} &fYou paid &2{money}."

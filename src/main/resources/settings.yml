@@ -8,20 +8,20 @@
 
 settings:
 
-  #   Формат объявления:
-  #   {prefix} = префикс
-  #   {broadcast} = объявление
-  #   {player} = автор
-  #   {admin} = администратор
+  # ad format:
+  # {prefix} = prefix
+  # {broadcast} = announcement
+  # {player} = author
+  # {admin} = administrator
 
   broadcast-format:
-    - "{prefix} &f{broadcast} &2(Автор: {player})"
-    - " &2› &fПроверил администратор - &2{admin}"
+    - "{prefix} &f{broadcast} &2(Author: {player})"
+    - " &2› &fVerified by admin - &2{admin}"
 
-  #   Кулдаун на команду /ibc broadcast
+  # Kuldown to /ibc broadcast command
 
   broadcast-cooldown: 30
 
-  #   Стоимость объявления
+  # Ad cost
 
   broadcast-cost: 100

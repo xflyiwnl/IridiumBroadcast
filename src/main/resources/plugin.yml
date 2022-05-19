@@ -1,8 +1,11 @@
 name: IridiumBroadcast
 version: '${project.version}'
 main: me.xflyiwnl.iridiumbroadcast.Main
+authors:
+  - Iridium
+depend:
+  - Vault
 api-version: 1.16
-authors: [ Iridium ]
 description: Плагин на объявления с модерацией
 website: vk.com/iridiumstudio
 

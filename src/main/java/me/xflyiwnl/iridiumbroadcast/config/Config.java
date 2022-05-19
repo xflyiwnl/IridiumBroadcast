@@ -26,28 +26,24 @@ public class Config {
         settingsFile = new File(Main.getMain().getDataFolder(), "settings.yml");
         if (!settingsFile.exists()) {
             Main.getMain().saveResource("settings.yml", true);
-            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "Iridium Broadcast " + ChatColor.GRAY + "| " + ChatColor.WHITE + "settings.yml не найден, создание нового конфига...");
         }
         settingsYaml = YamlConfiguration.loadConfiguration(settingsFile);
 
         languageFile = new File(Main.getMain().getDataFolder(), "language.yml");
         if (!languageFile.exists()) {
             Main.getMain().saveResource("language.yml", true);
-            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "Iridium Broadcast " + ChatColor.GRAY + "| " + ChatColor.WHITE + "language.yml не найден, создание нового конфига...");
         }
         languageYaml = YamlConfiguration.loadConfiguration(languageFile);
 
         databaseFile = new File(Main.getMain().getDataFolder(), "database.yml");
         if (!databaseFile.exists()) {
             Main.getMain().saveResource("database.yml", true);
-            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "Iridium Broadcast " + ChatColor.GRAY + "| " + ChatColor.WHITE + "database.yml не найден, создание нового конфига...");
         }
         databaseYaml = YamlConfiguration.loadConfiguration(databaseFile);
 
         guiFile = new File(Main.getMain().getDataFolder(), "gui.yml");
         if (!guiFile.exists()) {
             Main.getMain().saveResource("gui.yml", true);
-            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "Iridium Broadcast " + ChatColor.GRAY + "| " + ChatColor.WHITE + "gui.yml не найден, создание нового конфига...");
         }
         guiYaml = YamlConfiguration.loadConfiguration(guiFile);
 

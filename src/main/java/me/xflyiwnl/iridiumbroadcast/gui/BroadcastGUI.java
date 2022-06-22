@@ -2,6 +2,7 @@ package me.xflyiwnl.iridiumbroadcast.gui;
 
 import me.xflyiwnl.iridiumbroadcast.Main;
 import me.xflyiwnl.iridiumbroadcast.config.Config;
+import me.xflyiwnl.iridiumbroadcast.manager.BroadcastManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -29,8 +30,8 @@ public class BroadcastGUI {
     private static void setSlot() {
 
         slot.clear();
-        for (Player p : Main.broadcasts.keySet()) {
-            for (int i = 0; i < Main.broadcasts.size(); i++) {
+        for (Player p : BroadcastManager.broadcasts.keySet()) {
+            for (int i = 0; i < BroadcastManager.broadcasts.size(); i++) {
 
                 if (p == null) {
                     break;
@@ -49,7 +50,7 @@ public class BroadcastGUI {
                 for (String s : Config.getGuiYaml().getStringList("gui.broadcast.item-format.lore")) {
                     broadcastLore.add(ChatColor.translateAlternateColorCodes('&', s.
                             replace("{player}", p.getPlayer().getName()).
-                            replace("{broadcast}", Main.broadcasts.get(p).getBroadcast())));
+                            replace("{broadcast}", BroadcastManager.broadcasts.get(p).getBroadcast())));
                 }
 
                 broadcastMeta.setLore(broadcastLore);

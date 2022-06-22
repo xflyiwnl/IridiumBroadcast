@@ -3,6 +3,7 @@ package me.xflyiwnl.iridiumbroadcast.utils;
 import me.xflyiwnl.iridiumbroadcast.Main;
 import me.xflyiwnl.iridiumbroadcast.broadcast.Broadcast;
 import me.xflyiwnl.iridiumbroadcast.config.Config;
+import me.xflyiwnl.iridiumbroadcast.manager.BroadcastManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -32,7 +33,7 @@ public class BroadcastUtil {
             Player player = Bukkit.getPlayer(key);
             String broadcast = Config.getDatabaseYaml().getString("database." + key);
 
-            Main.broadcasts.put(player, new Broadcast(player, broadcast));
+            BroadcastManager.broadcasts.put(player, new Broadcast(player, broadcast));
 
         }
     }

@@ -5,6 +5,7 @@ import me.xflyiwnl.iridiumbroadcast.broadcast.Broadcast;
 import me.xflyiwnl.iridiumbroadcast.chat.ChatMessages;
 import me.xflyiwnl.iridiumbroadcast.config.Config;
 import me.xflyiwnl.iridiumbroadcast.gui.BroadcastGUI;
+import me.xflyiwnl.iridiumbroadcast.manager.BroadcastManager;
 import me.xflyiwnl.iridiumbroadcast.manager.CooldownManager;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
@@ -43,7 +44,7 @@ public class BroadcastCommand implements CommandExecutor {
                 return true;
             }
 
-            if (!(Main.broadcasts.get(player) == null)) {
+            if (!(BroadcastManager.broadcasts.get(player) == null)) {
                 ChatMessages.alreadySent(player);
                 return true;
             }
@@ -65,13 +66,13 @@ public class BroadcastCommand implements CommandExecutor {
             }
 
             try {
-                Main.broadcasts.put(player, new Broadcast(player, sb.toString()));
+                BroadcastManager.broadcasts.put(player, new Broadcast(player, sb.toString()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
             ChatMessages.broadcastSent(player);
-            Broadcast.notification();
+            BroadcastManager.notification();
             ChatMessages.withdrawMoney(player);
 
             CooldownManager.getCooldownTimer().put(player.getUniqueId(), Config.getSettingsYaml().getInt("settings.broadcast-cooldown"));
@@ -99,7 +100,7 @@ public class BroadcastCommand implements CommandExecutor {
 
             ChatMessages.cleared(player);
 
-            Main.broadcasts.clear();
+            BroadcastManager.broadcasts.clear();
 
             if (Config.getDatabaseYaml().getConfigurationSection("database") == null) {
                 return true;

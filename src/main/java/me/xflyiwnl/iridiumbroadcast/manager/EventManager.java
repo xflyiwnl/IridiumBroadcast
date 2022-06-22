@@ -37,10 +37,10 @@ public class EventManager implements Listener {
 
             if (event.getClick().isLeftClick()) {
 
-                Broadcast.broadcast(BroadcastGUI.getSlot().get(slot), player,
-                        Main.broadcasts.get(BroadcastGUI.getSlot().get(slot)).getBroadcast());
+                BroadcastManager.broadcast(BroadcastGUI.getSlot().get(slot), player,
+                        BroadcastManager.broadcasts.get(BroadcastGUI.getSlot().get(slot)).getBroadcast());
 
-                Main.broadcasts.remove(BroadcastGUI.getSlot().get(slot));
+                BroadcastManager.broadcasts.remove(BroadcastGUI.getSlot().get(slot));
 
                 Config.getDatabaseYaml().set("database." + BroadcastGUI.getSlot().get(slot).getName(), null);
                 Config.getDatabaseYaml().save(Config.getDatabaseFile());
@@ -59,7 +59,7 @@ public class EventManager implements Listener {
             }
             if (event.getClick().isRightClick()) {
 
-                Main.broadcasts.remove(BroadcastGUI.getSlot().get(slot));
+                BroadcastManager.broadcasts.remove(BroadcastGUI.getSlot().get(slot));
 
                 Config.getDatabaseYaml().set("database." + BroadcastGUI.getSlot().get(slot).getName(), null);
                 Config.getDatabaseYaml().save(Config.getDatabaseFile());

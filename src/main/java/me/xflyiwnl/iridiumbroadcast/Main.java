@@ -23,8 +23,6 @@ public final class Main extends JavaPlugin {
     private static Economy econ = null;
     private static final Logger log = Logger.getLogger("Minecraft");
 
-    public static HashMap<Player, Broadcast> broadcasts = new HashMap<Player, Broadcast>();
-
     private static Logger logger = Bukkit.getLogger();
 
     private static Main main;
@@ -79,10 +77,6 @@ public final class Main extends JavaPlugin {
 
     public static Main getMain() {
         return main;
-    }
-
-    public static Broadcast getBroadcasts(Player player) {
-        return broadcasts.get(player);
     }
 
     public static Economy getEconomy() {
